@@ -1,0 +1,20 @@
+project_id = "ajowwwdykvojbjkqhddv"
+
+[auth]
+enabled = true
+site_url = "env(SITE_URL)"
+additional_redirect_urls = ["http://localhost:5174", "env(SITE_URL)"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_confirmations = true
+max_frequency = "1m0s"
+otp_length = 8
+otp_expiry = 3600
+
+[auth.external.google]
+enabled = true
+client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+skip_nonce_check = false
