@@ -53,7 +53,7 @@ defineProps<{ label?: string }>()
 const open = ref(false)
 
 const STEPS = [
-  'Pense em uma lista de tarefas que te leva ao objetivo.',
+  'Pense numa lista de tarefas que te leva ao objetivo.',
   'Leia todos os dias a sua missão até atingir seu objetivo.',
   'Assinale como prioridade o que é mais importante naquele dia.',
   'Distribua as tarefas na semana e não deixe nada de fora.',
