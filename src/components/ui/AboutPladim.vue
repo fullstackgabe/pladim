@@ -53,12 +53,12 @@ defineProps<{ label?: string }>()
 const open = ref(false)
 
 const STEPS = [
-  'Pense em uma lista e coloque nela tudo o que precisa fazer.',
-  'Leia a sua missão, tenha sempre em mente seu objetivo/meta.',
-  'Assinale as prioridades, as coisas mais importantes para fazer.',
-  'Distribua na semana, não deixando tudo pra última hora.',
-  'Imprevistos você terá, deixe um tempo livre para eles.',
-  'Mentalize e tenha sempre em vista aquilo que planejou e saiba exatamente o que fazer.',
+  'Pense em uma lista do que precisa fazer para alcançar o seu objetivo.',
+  'Leia todos os dias a sua missão até atingir sua meta.',
+  'Assinale como prioridade o que é mais importante no dia.',
+  'Distribua as tarefas na semana e não deixe nada de fora.',
+  'Imprevistos acontecem, reserve um dia para resolver eles.',
+  'Mantenha sua missão sempre à vista, para ter em mente o que precisa fazer.',
 ]
 </script>
 

@@ -11,6 +11,7 @@ export interface Task {
   points: number
   scheduledDays: number[]
   completedDates: string[]
+  priorityDates: string[]
   createdAt: number
 }
 

@@ -7,6 +7,7 @@ const toTask = (row: any): Task => ({
   points: row.points,
   scheduledDays: row.scheduled_days,
   completedDates: row.completed_dates,
+  priorityDates: row.priority_dates ?? [],
   createdAt: row.created_at,
 })
 
@@ -74,6 +75,7 @@ export const insertTask = async (userId: string, email: string, task: Task) => {
     points: task.points,
     scheduled_days: task.scheduledDays,
     completed_dates: task.completedDates,
+    priority_dates: task.priorityDates,
     created_at: task.createdAt,
   })
 }
@@ -84,6 +86,7 @@ export const updateTask = async (userId: string, task: Task) => {
     points: task.points,
     scheduled_days: task.scheduledDays,
     completed_dates: task.completedDates,
+    priority_dates: task.priorityDates,
   }).eq('id', task.id).eq('user_id', userId)
 }
 

@@ -103,6 +103,7 @@ export const usePladimStore = defineStore('pladim', {
         points,
         scheduledDays,
         completedDates: [],
+        priorityDates: [],
         createdAt: Date.now(),
       }
       this.tasks.push(task)
@@ -159,6 +160,19 @@ export const usePladimStore = defineStore('pladim', {
           await deleteTaskCompletion(this.userId!, completion.id)
         }
       }
+    },
+
+    async toggleTaskPriority(taskId: string, dateString: string) {
+      if (!this.userId) return
+      const task = this.tasks.find(t => t.id === taskId)
+      if (!task) return
+      const index = task.priorityDates.indexOf(dateString)
+      if (index > -1) {
+        task.priorityDates.splice(index, 1)
+      } else {
+        task.priorityDates.push(dateString)
+      }
+      await dbUpdateTask(this.userId, task)
     },
 
     async addReward(title: string, points: number) {

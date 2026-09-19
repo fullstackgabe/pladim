@@ -57,7 +57,8 @@
         <div
           v-for="item in agendaItems"
           :key="item.key"
-          class="p-4 flex items-center justify-between transition-all hover:bg-gray-50 group"
+          class="p-4 flex items-center justify-between transition-all group"
+          :class="item.priority && !item.completed ? 'bg-amber-50/40 hover:bg-amber-50/70' : 'hover:bg-gray-50'"
         >
           <div class="flex items-center gap-4">
             <button
@@ -70,14 +71,28 @@
             </button>
             <div class="flex flex-col">
               <span
-                class="font-medium transition-all"
-                :class="item.completed ? 'text-gray-400 line-through decoration-gray-300' : 'text-gray-700'"
+                class="transition-all"
+                :class="[
+                  item.completed ? 'text-gray-400 line-through decoration-gray-300' : 'text-gray-700',
+                  item.priority ? 'font-semibold' : 'font-medium',
+                ]"
               >
                 {{ item.title }}
               </span>
             </div>
           </div>
           <div class="flex items-center gap-2">
+            <button
+              v-if="!item.orphan"
+              type="button"
+              @click="togglePriority(item.taskId)"
+              class="p-1 rounded-full transition-all focus:outline-none cursor-pointer transform hover:scale-110 active:scale-95"
+              :class="item.priority ? 'text-amber-400 hover:text-amber-500' : 'text-gray-300 hover:text-amber-400'"
+              :aria-label="item.priority ? 'Tirar prioridade' : 'Marcar como prioridade'"
+              :title="item.priority ? 'Prioridade do dia' : 'Marcar como prioridade'"
+            >
+              <Star class="w-5 h-5" :class="item.priority ? 'fill-amber-400' : ''" />
+            </button>
             <span
               class="text-xs font-bold px-2.5 py-1 rounded-full border transition-all"
               :class="item.completed
@@ -108,7 +123,7 @@ import {
   getDay
 } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import { CheckCircle, Circle } from 'lucide-vue-next'
+import { CheckCircle, Circle, Star } from 'lucide-vue-next'
 import type { Task, TaskCompletion } from '@/types'
 
 const props = defineProps<{
@@ -118,6 +133,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   (e: 'toggle-date', payload: { taskId: string, date: string }): void
+  (e: 'toggle-priority', payload: { taskId: string, date: string }): void
 }>()
 
 const currentDate = ref(new Date())
@@ -144,6 +160,8 @@ type AgendaItem = {
   title: string
   points: number
   completed: boolean
+  priority: boolean
+  orphan: boolean
 }
 
 const orphanCompletionsForDate = (dateStr: string) => {
@@ -163,7 +181,10 @@ const agendaItems = computed<AgendaItem[]>(() => {
       title: task.title,
       points: task.points,
       completed: task.completedDates.includes(dateStr),
+      priority: task.priorityDates.includes(dateStr),
+      orphan: false,
     }))
+    .sort((a, b) => Number(b.priority) - Number(a.priority))
 
   const orphanItems: AgendaItem[] = orphanCompletionsForDate(dateStr).map(c => ({
     key: `orphan-${c.id}`,
@@ -171,6 +192,8 @@ const agendaItems = computed<AgendaItem[]>(() => {
     title: c.taskTitle,
     points: c.points,
     completed: true,
+    priority: false,
+    orphan: true,
   }))
 
   return [...activeItems, ...orphanItems]
@@ -194,6 +217,11 @@ const hasTasksForDate = (date: Date) => {
 const toggleTask = (taskId: string) => {
   const dateStr = format(selectedDate.value, 'yyyy-MM-dd')
   emit('toggle-date', { taskId, date: dateStr })
+}
+
+const togglePriority = (taskId: string) => {
+  const dateStr = format(selectedDate.value, 'yyyy-MM-dd')
+  emit('toggle-priority', { taskId, date: dateStr })
 }
 
 const getDayClasses = (date: Date) => {

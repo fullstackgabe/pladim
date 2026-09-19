@@ -41,6 +41,7 @@
               :tasks="store.tasks"
               :task-completions="store.taskCompletions"
               @toggle-date="handleToggleDate"
+              @toggle-priority="handleTogglePriority"
             />
           </div>
           <div v-else-if="activeTab === 'tasks'" key="tasks">
@@ -110,6 +111,10 @@ const handleAddReward = ({ title, points }: { title: string, points: number }) =
 
 const handleToggleDate = ({ taskId, date }: { taskId: string, date: string }) => {
   store.toggleTaskDate(taskId, date)
+}
+
+const handleTogglePriority = ({ taskId, date }: { taskId: string, date: string }) => {
+  store.toggleTaskPriority(taskId, date)
 }
 
 const handlePurchaseReward = (reward: Reward) => {
