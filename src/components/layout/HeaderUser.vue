@@ -21,12 +21,15 @@
       </div>
     </button>
 
-    <button
-      @click="$emit('logout')"
-      class="px-4 py-1.5 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
-    >
-      Sair
-    </button>
+    <div class="flex items-center gap-2">
+      <AboutPladim />
+      <button
+        @click="$emit('logout')"
+        class="px-4 py-1.5 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
+      >
+        Sair
+      </button>
+    </div>
   </header>
 
   <Teleport to="body">
@@ -90,6 +93,7 @@
 import { ref, watch } from 'vue'
 import { User as UserIcon } from 'lucide-vue-next'
 import type { GoogleUser } from '@/types'
+import AboutPladim from '@/components/ui/AboutPladim.vue'
 
 const props = defineProps<{
   user: GoogleUser | null

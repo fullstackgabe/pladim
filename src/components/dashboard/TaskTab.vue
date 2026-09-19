@@ -104,7 +104,7 @@
         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-50 mb-4">
           <Plus class="w-8 h-8 text-gray-300" />
         </div>
-        <h3 class="text-lg font-medium text-gray-900">Nenhuma tarefa ainda</h3>
+        <h3 class="text-lg font-medium text-gray-900">Nenhuma tarefa criada</h3>
         <p class="mt-1 text-gray-500 max-w-sm mx-auto">Comece adicionando tarefas que você deseja realizar regularmente para acumular pontos.</p>
       </div>
     </div>
@@ -123,7 +123,7 @@
           <div class="font-bold text-teal-600 text-sm whitespace-nowrap">+{{ item.points }} pts</div>
         </div>
         <div v-if="taskCompletions.length === 0" class="px-6 py-8 text-center text-gray-400 text-sm">
-          Nenhuma tarefa concluída ainda.
+          Nenhuma tarefa concluída.
         </div>
       </div>
     </div>

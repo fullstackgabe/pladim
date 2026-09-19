@@ -88,7 +88,7 @@
         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-50 mb-4">
           <Plus class="w-8 h-8 text-gray-300" />
         </div>
-        <h3 class="text-lg font-medium text-gray-900">Nenhuma recompensa ainda</h3>
+        <h3 class="text-lg font-medium text-gray-900">Nenhuma recompensa criada</h3>
         <p class="mt-1 text-gray-500 max-w-sm mx-auto">Cadastre prêmios para você mesmo e troque seus pontos por eles!</p>
       </div>
     </div>
@@ -110,7 +110,7 @@
           </div>
         </div>
          <div v-if="purchases.length === 0" class="px-6 py-8 text-center text-gray-400 text-sm">
-          Nenhum resgate realizado ainda.
+          Nenhum resgate realizado.
         </div>
       </div>
     </div>

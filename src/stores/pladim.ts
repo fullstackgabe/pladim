@@ -5,6 +5,8 @@ import type { Task, Reward, GoogleUser, Purchase, TaskCompletion } from '@/types
 import { supabase } from '@/services/supabase'
 import {
   loadUserData,
+  loadGoal,
+  updateGoal,
   upsertProfile,
   insertTask,
   updateTask as dbUpdateTask,
@@ -27,6 +29,7 @@ export const usePladimStore = defineStore('pladim', {
     rewards: [] as Reward[],
     purchases: [] as Purchase[],
     taskCompletions: [] as TaskCompletion[],
+    goal: '',
     loading: false,
     authReady: false,
   }),
@@ -70,7 +73,8 @@ export const usePladimStore = defineStore('pladim', {
       if (!this.userId) return
       this.loading = true
       try {
-        const data = await loadUserData(this.userId)
+        const [data, goal] = await Promise.all([loadUserData(this.userId), loadGoal(this.userId)])
+        this.goal = goal
         this.tasks = data.tasks
         this.rewards = data.rewards
         this.purchases = data.purchases
@@ -82,6 +86,13 @@ export const usePladimStore = defineStore('pladim', {
 
     async logout() {
       await supabase.auth.signOut()
+    },
+
+    async setGoal(goal: string) {
+      if (!this.userId) return
+      this.goal = goal.trim()
+      await updateGoal(this.userId, this.goal)
+      useToast().add({ title: 'Sucesso', message: 'Meta atualizada!', type: 'success' })
     },
 
     async addTask(title: string, points: number, scheduledDays: number[]) {

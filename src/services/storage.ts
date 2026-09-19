@@ -49,6 +49,15 @@ export const loadUserData = async (userId: string) => {
   }
 }
 
+export const loadGoal = async (userId: string): Promise<string> => {
+  const { data } = await supabase.from('profiles').select('goal').eq('id', userId).maybeSingle()
+  return data?.goal || ''
+}
+
+export const updateGoal = async (userId: string, goal: string) => {
+  await supabase.from('profiles').update({ goal }).eq('id', userId)
+}
+
 export const upsertProfile = async (userId: string, email: string, name: string, avatar: string) => {
   await supabase.from('profiles').upsert(
     { id: userId, email, name, avatar, created_at: Date.now() },

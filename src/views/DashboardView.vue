@@ -12,6 +12,7 @@
           <span class="text-4xl font-black mt-1" :class="store.totalBalance < 0 ? 'text-red-500' : 'text-teal-600'">{{ store.totalBalance }}</span>
         </div>
       </div>
+      <GoalWidget class="mb-10" :goal="store.goal" @save="handleSaveGoal" />
       <div class="flex rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 mb-6">
         <button 
           v-for="tab in tabs" 
@@ -76,6 +77,7 @@ import HeaderUser from '@/components/layout/HeaderUser.vue'
 import AgendaTab from '@/components/dashboard/AgendaTab.vue'
 import TaskTab from '@/components/dashboard/TaskTab.vue'
 import RewardTab from '@/components/dashboard/RewardTab.vue'
+import GoalWidget from '@/components/dashboard/GoalWidget.vue'
 
 const store = usePladimStore()
 const activeTab = ref<'agenda' | 'tasks' | 'rewards'>('agenda')
@@ -92,6 +94,10 @@ const handleLogout = () => {
 
 const handleResetData = () => {
   store.resetData()
+}
+
+const handleSaveGoal = (goal: string) => {
+  store.setGoal(goal)
 }
 
 const handleAddTask = ({ title, points, scheduledDays }: { title: string, points: number, scheduledDays: number[] }) => {

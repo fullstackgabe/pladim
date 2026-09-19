@@ -1,10 +1,16 @@
 <template>
-  <div class="flex items-center justify-center min-h-screen bg-gray-50">
-    <div class="bg-white p-12 rounded-2xl shadow-lg max-w-md w-full text-center mx-4">
+  <div class="relative flex items-center justify-center min-h-screen overflow-hidden bg-gradient-to-br from-teal-50 via-white to-emerald-50">
+    <div class="pointer-events-none absolute -top-24 -left-24 w-80 h-80 rounded-full bg-teal-200/60 blur-3xl"></div>
+    <div class="pointer-events-none absolute -bottom-32 -right-24 w-96 h-96 rounded-full bg-emerald-200/60 blur-3xl"></div>
+    <div class="pointer-events-none absolute top-1/4 right-1/4 w-56 h-56 rounded-full bg-yellow-100/70 blur-3xl"></div>
+    <div class="relative bg-white p-12 rounded-2xl shadow-2xl shadow-gray-900/25 ring-1 ring-gray-100 max-w-md w-full text-center mx-4">
       <h1 class="text-4xl font-bold mb-3 text-[#1a202c] tracking-tight">Pladim.</h1>
-      <p class="text-gray-500 mb-10 text-lg font-normal">
+      <p class="text-gray-500 mb-3 text-lg font-normal">
         Planejador de Tarefas Gamificado.
       </p>
+      <div class="mb-10">
+        <AboutPladim label="O que é Pladim?" />
+      </div>
       <button
         @click="loginWithGoogle"
         :disabled="loading"
@@ -27,6 +33,7 @@
 import { ref } from 'vue'
 import { supabase } from '@/services/supabase'
 import { useToast } from '@/components/ui/ToastContainer.vue'
+import AboutPladim from '@/components/ui/AboutPladim.vue'
 
 const loading = ref(false)
 const { add: addToast } = useToast()
