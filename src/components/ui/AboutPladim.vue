@@ -3,8 +3,8 @@
     type="button"
     @click="open = true"
     :class="label
-      ? 'inline-flex items-center gap-1.5 text-sm font-medium text-teal-600 hover:text-teal-700 transition-colors cursor-pointer'
-      : 'p-2 rounded-lg text-teal-600 hover:bg-teal-50 transition-colors cursor-pointer'"
+      ? 'inline-flex items-center gap-1.5 text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors cursor-pointer'
+      : 'p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer'"
     aria-label="O que é Pladim?"
   >
     <Info class="w-5 h-5" />
@@ -13,9 +13,9 @@
 
   <Teleport to="body">
     <Transition name="modal">
-      <div v-if="open" class="fixed inset-0 z-50 flex items-center justify-center p-4" @click.self="open = false">
+      <div v-if="open" class="fixed inset-0 z-50 flex items-center justify-center p-6" @click.self="open = false">
         <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" @click="open = false"></div>
-        <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
+        <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md p-6 sm:p-7 max-h-[calc(100vh-3rem)] overflow-y-auto">
           <button
             type="button"
             @click="open = false"
@@ -25,15 +25,15 @@
             <X class="w-5 h-5" />
           </button>
 
-          <h2 class="text-2xl font-bold text-gray-900 tracking-tight">O que é <span class="text-teal-600">Pladim</span>?</h2>
-          <p class="text-sm text-gray-500 mt-1 mb-6">Cada letra é um passo do método:</p>
+          <h2 class="text-xl font-bold text-gray-900 tracking-tight">O que é <span class="text-teal-600">Pladim</span>?</h2>
+          <p class="text-xs text-gray-500 mt-1 mb-5">Cada letra é um passo do método:</p>
 
-          <ol class="space-y-4">
-            <li v-for="step in STEPS" :key="step" class="flex items-start gap-3">
-              <span class="w-9 h-9 shrink-0 rounded-lg bg-teal-600 text-white font-bold text-lg flex items-center justify-center">
+          <ol class="space-y-3">
+            <li v-for="step in STEPS" :key="step" class="flex items-center gap-3">
+              <span class="w-8 h-8 shrink-0 rounded-lg bg-teal-600 text-white font-bold text-base flex items-center justify-center">
                 {{ step[0] }}
               </span>
-              <p class="text-gray-700 leading-snug pt-1.5">
+              <p class="text-[13px] text-gray-700 leading-4">
                 <span class="font-bold text-teal-700">{{ step[0] }}</span>{{ step.slice(1) }}
               </p>
             </li>
@@ -53,12 +53,12 @@ defineProps<{ label?: string }>()
 const open = ref(false)
 
 const STEPS = [
-  'Pense em uma lista e coloque nela tudo o que precisa fazer',
-  'Leia a sua missão, tenha sempre em mente seu objetivo/meta',
-  'Assinale as prioridades, as coisas mais importantes para fazer',
-  'Distribua na semana, não deixando tudo pra última hora',
-  'Imprevistos você terá, deixe um tempo livre para eles',
-  'Mentalize e tenha sempre em vista aquilo que planejou e saiba exatamente o que fazer',
+  'Pense em uma lista e coloque nela tudo o que precisa fazer.',
+  'Leia a sua missão, tenha sempre em mente seu objetivo/meta.',
+  'Assinale as prioridades, as coisas mais importantes para fazer.',
+  'Distribua na semana, não deixando tudo pra última hora.',
+  'Imprevistos você terá, deixe um tempo livre para eles.',
+  'Mentalize e tenha sempre em vista aquilo que planejou e saiba exatamente o que fazer.',
 ]
 </script>
 
