@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-50 pb-20 font-sans">
     <main class="max-w-5xl mx-auto px-4 py-8"> 
       <HeaderUser :user="store.user" @logout="handleLogout" @reset="handleResetData" />
-      <div class="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
+      <div class="flex flex-col md:flex-row items-center justify-between mb-6 gap-6">
         <div class="text-center md:text-left">
            <h1 class="text-3xl font-bold text-gray-800 mb-2">Planejador de Tarefas</h1>
            <p class="text-gray-500">Transforme sua rotina em um jogo e conquiste suas metas.</p>
@@ -12,7 +12,7 @@
           <span class="text-4xl font-black mt-1" :class="store.totalBalance < 0 ? 'text-red-500' : 'text-teal-600'">{{ store.totalBalance }}</span>
         </div>
       </div>
-      <GoalWidget class="mb-10" :goal="store.goal" @save="handleSaveGoal" />
+      <GoalWidget class="mb-6" :goal="store.goal" @save="handleSaveGoal" />
       <div class="flex rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 mb-6">
         <button 
           v-for="tab in tabs" 
@@ -26,7 +26,7 @@
           <div v-if="activeTab === tab.id" class="absolute bottom-0 left-0 w-full h-1 bg-teal-500"></div>
         </button>
       </div>
-      <div class="mt-4 min-h-[400px]">
+      <div class="min-h-[400px]">
         <Transition
           enter-active-class="transition duration-200 ease-out"
           enter-from-class="opacity-0 translate-y-2"

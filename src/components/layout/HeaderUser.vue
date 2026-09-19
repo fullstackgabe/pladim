@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white py-4 px-6 mb-8 flex items-center justify-between rounded-xl shadow-sm border border-gray-100">
+  <header class="bg-white py-4 px-6 mb-6 flex items-center justify-between rounded-xl shadow-sm border border-gray-100">
     <button
       @click="showModal = true"
       class="flex items-center gap-3 cursor-pointer transform hover:scale-105 transition-transform duration-300 text-left"
@@ -21,15 +21,12 @@
       </div>
     </button>
 
-    <div class="flex items-center gap-2">
-      <AboutPladim />
-      <button
-        @click="$emit('logout')"
-        class="px-4 py-1.5 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
-      >
-        Sair
-      </button>
-    </div>
+    <button
+      @click="$emit('logout')"
+      class="px-4 py-1.5 text-sm font-medium text-red-500 border border-red-200 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
+    >
+      Sair
+    </button>
   </header>
 
   <Teleport to="body">
@@ -93,7 +90,6 @@
 import { ref, watch } from 'vue'
 import { User as UserIcon } from 'lucide-vue-next'
 import type { GoogleUser } from '@/types'
-import AboutPladim from '@/components/ui/AboutPladim.vue'
 
 const props = defineProps<{
   user: GoogleUser | null

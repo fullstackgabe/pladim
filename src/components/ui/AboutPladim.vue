@@ -3,7 +3,7 @@
     type="button"
     @click="open = true"
     :class="label
-      ? 'inline-flex items-center gap-1.5 text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors cursor-pointer'
+      ? 'inline-flex items-center gap-1.5 text-sm font-medium text-teal-900 hover:text-teal-700 transition-colors cursor-pointer'
       : 'p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer'"
     aria-label="O que é Pladim?"
   >
