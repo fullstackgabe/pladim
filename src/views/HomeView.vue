@@ -5,9 +5,6 @@
     <div class="pointer-events-none absolute top-1/4 right-1/4 w-56 h-56 rounded-full bg-yellow-100/70 blur-3xl"></div>
     <div class="relative bg-white p-12 rounded-2xl shadow-2xl shadow-gray-900/25 ring-1 ring-gray-100 max-w-md w-full text-center mx-4">
       <h1 class="text-4xl font-bold mb-3 text-[#1a202c] tracking-tight">Pladim.</h1>
-      <p class="text-gray-500 mb-3 text-lg font-normal">
-        Planejador de Tarefas Gamificado.
-      </p>
       <div class="mb-10">
         <AboutPladim label="O que é Pladim?" />
       </div>

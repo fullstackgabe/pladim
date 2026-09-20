@@ -6,13 +6,13 @@
       type="button"
       @click="openEditor"
       class="absolute top-3 right-3 p-2 rounded-lg text-gray-400 hover:text-teal-700 hover:bg-teal-50 transition-colors cursor-pointer"
-      :aria-label="goal ? 'Editar meta' : 'Definir meta'"
+      :aria-label="goal ? 'Editar missão' : 'Definir missão'"
     >
       <Pencil class="w-4 h-4" />
     </button>
     <span class="relative flex items-center gap-1.5 text-teal-600 text-xs font-bold uppercase tracking-widest">
       <Target class="w-4 h-4" />
-      Minha meta
+      Minha missão
     </span>
     <p v-if="goal" class="relative mt-1 text-lg font-semibold leading-snug pr-8 whitespace-pre-line text-gray-800">{{ goal }}</p>
     <button
@@ -21,7 +21,7 @@
       @click="openEditor"
       class="relative mt-1 text-left text-gray-500 text-base pr-8 cursor-pointer hover:text-teal-700 transition-colors"
     >
-      Defina a sua meta e deixe ela sempre à vista.
+      Defina a sua missão e deixe ela sempre à vista.
     </button>
   </div>
 
@@ -30,18 +30,18 @@
       <div v-if="editing" class="fixed inset-0 z-50 flex items-center justify-center p-4" @click.self="editing = false">
         <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" @click="editing = false"></div>
         <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
-          <h2 class="text-xl font-bold text-gray-900 mb-1">Minha meta</h2>
-          <p class="text-sm text-gray-500 mb-4">Leia a sua missão e tenha sempre em mente o seu objetivo.</p>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">Minha missão</h2>
+          <p class="text-sm text-gray-500 mb-4">Escreva a sua missão e tenha sempre em mente o seu objetivo.</p>
           <textarea
             ref="input"
             v-model="draft"
             rows="3"
-            maxlength="200"
+            maxlength="100"
             placeholder="Ex.: Passar no concurso até dezembro"
             class="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none"
           ></textarea>
           <div class="flex justify-between items-center mt-1">
-            <span class="text-xs text-gray-400">{{ draft.length }}/200</span>
+            <span class="text-xs text-gray-400">{{ draft.length }}/100</span>
           </div>
           <div class="flex gap-3 mt-4">
             <button
@@ -88,7 +88,7 @@ const openEditor = async () => {
 }
 
 const save = () => {
-  emit('save', draft.value.trim())
+  emit('save', draft.value.trim().slice(0, 100))
   editing.value = false
 }
 </script>

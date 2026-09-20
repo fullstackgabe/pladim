@@ -50,7 +50,7 @@
         <div class="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-2">
           <CheckCircle class="w-5 h-5 text-gray-300" />
         </div>
-        <p class="text-gray-400 font-medium">Nenhuma tarefa para esse dia</p>
+        <p class="text-gray-400 text-sm">Nenhuma tarefa para esse dia.</p>
       </div>
 
       <div v-else class="divide-y divide-gray-50">
