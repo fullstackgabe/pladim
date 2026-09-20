@@ -58,7 +58,7 @@ const STEPS = [
   'Assinale como prioridade o que é mais importante pra cada dia.',
   'Distribua as tarefas na semana e não deixe nada de fora.',
   'Imprevistos acontecem, reserve um dia para eles.',
-  'Mentalize todos os dias como vai ser quando alcançar sua meta.',
+  'Mentalize todos os dias como vai ser quando atingir sua meta.',
 ]
 </script>
 
