@@ -55,7 +55,7 @@ const open = ref(false)
 const STEPS = [
   'Pense numa lista de tarefas que te leva ao objetivo.',
   'Leia a sua missão todos os dias até alcançar seu objetivo.',
-  'Assinale como prioridade o que é mais importante naquele dia.',
+  'Assinale como prioridade o que é mais importante pra cada dia.',
   'Distribua as tarefas na semana e não deixe nada de fora.',
   'Imprevistos acontecem, reserve um dia para eles.',
   'Mentalize todos os dias como vai ser quando alcançar sua meta.',
